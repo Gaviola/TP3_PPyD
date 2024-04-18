@@ -1,0 +1,4 @@
+/home/fgaviola/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/fgaviola/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/fgaviola/CLionProjects/MPI -B /home/fgaviola/CLionProjects/MPI/cmake-build-debug
+-- Configuring done (2.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/fgaviola/CLionProjects/MPI/cmake-build-debug
