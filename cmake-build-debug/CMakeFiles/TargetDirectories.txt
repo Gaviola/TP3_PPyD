@@ -1,3 +1,0 @@
-/home/fgaviola/CLionProjects/MPI/cmake-build-debug/CMakeFiles/MPI.dir
-/home/fgaviola/CLionProjects/MPI/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/fgaviola/CLionProjects/MPI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
