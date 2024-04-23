@@ -12,11 +12,13 @@ using std::strcpy;
 void ejercicio3();
 void ejercicio4();
 void ejercicio7();
+void ejercicio5();
 
 int main() {
     //ejercicio3();
     //ejercicio4();
-    ejercicio7();
+    //ejercicio7();
+    ejercicio5();
 }
 
 void ejercicio3() {
@@ -48,6 +50,28 @@ void ejercicio4() {
         cout << fixed << tiempo << endl;
     }
     MPI_Finalize();
+}
+
+int getGroup(int rank) {
+    int result;
+    result = rank % 2;
+    if (result < 1) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+void ejercicio5() {
+    MPI_Init(nullptr, nullptr);
+    int my_id, new_id;
+    MPI_Comm newcomm;
+    MPI_Comm_rank(MPI_COMM_WORLD, &my_id);
+    MPI_Comm_split(MPI_COMM_WORLD, getGroup(my_id),my_id,&newcomm);
+    MPI_Comm_rank(newcomm,&new_id);
+    printf("Proceso %d en el grupo %d\n", my_id, getGroup(my_id));
+    MPI_Finalize();
+
 }
 
 void Bcast(int  source, char *msg, int tam){
