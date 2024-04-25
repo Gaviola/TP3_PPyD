@@ -20,8 +20,8 @@ int main() {
     //ejercicio3();
     //ejercicio4();
     //ejercicio5();
-    ejercicio6();
-    //ejercicio7();
+    //ejercicio6();
+    ejercicio7();
 }
 
 void ejercicio3() {
@@ -57,8 +57,8 @@ void ejercicio4() {
 
 int getGroup(int rank) {
     int result;
-    result = rank % 2;
-    if (result < 1) {
+    result = rank % 8;
+    if (result < 4) {
         return 0;
     } else {
         return 1;
@@ -199,10 +199,12 @@ void Bcast(int  source, char *msg, int tam){
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     if( rank == source){
         for(int i = 0; i < size; i++){
-            MPI_Send(msg, tam, MPI_CHAR, i, 0, comm);
+            if(i != source){
+                MPI_Send(msg, tam, MPI_CHAR, i, 0, comm);
+            }
         }
     }
-    else{
+    else if (rank != source){
         MPI_Recv(msg, tam, MPI_CHAR, source, 0, comm, MPI_STATUS_IGNORE);
     }
 }
@@ -211,15 +213,18 @@ void ejercicio7(){
     MPI_Init(nullptr, nullptr);
     int rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    int source = 3;
     const int tam = 50;
     char mensaje[tam];
-    if (rank == 0){
+    if (rank == source){
         strcpy(mensaje, "Hello World");
     }
 
-    Bcast(0,mensaje,tam);
+    Bcast(source,mensaje,tam);
 
-    cout << "Proceso " << rank << " tiene el mensaje: " << mensaje << endl;
+    if(rank != source){
+        cout << "Proceso " << rank << " tiene el mensaje: " << mensaje << endl;
+    }
 
     MPI_Finalize();
 }
