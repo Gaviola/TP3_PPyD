@@ -57,11 +57,31 @@ void ejercicio4() {
 
 int getGroup(int rank) {
     int result;
-    result = rank % 8;
-    if (result < 4) {
+    int tamano = 8;
+    result = rank % tamano;
+    if (result < tamano / 2) {
         return 0;
     } else {
         return 1;
+    }
+}
+
+int getGroup2(int rank) {
+    int result;
+    int tamano = 8;
+    result = rank % tamano;
+    if (result < tamano / 2) {
+        if (result % 2 == 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    } else {
+        if (result % 2 == 0) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
 
