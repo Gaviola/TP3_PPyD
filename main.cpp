@@ -165,8 +165,8 @@ void ejercicio6() {
 
     } else {
         // Los workers reciben cartas
-        int card;
-        int points = 0;
+        float card;
+        float points = 0;
         bool keepAsking = true;
         while (keepAsking)  {
             MPI_Recv(&card, 1, MPI_FLOAT, 0, 0, MPI_COMM_WORLD, nullptr);
